@@ -12,12 +12,12 @@
   HOW TO EDIT
   • Words (names, dates, events, times, venues): scroll down to the
     blocks marked "EDIT: …".
-  • Pictures live in the "images" folder next to this file:
+  • Pictures sit next to this file (same folder):
       bg-cover.jpg  cover            bg-day3.jpg  Day 3 (Anand Karaj)
       bg-day1.jpg   Day 1            bg-day4.jpg  Day 4 (Reception)
       bg-day2.jpg   Day 2 (Haldi)    fall-*.png  falling flowers
       jhoola.png    the swing on Day 2 (moves on its own)
-      dove-*.png    the flying doves on Day 3
+      bird-*.png    the flying doves on Day 3
     To swap a picture, replace the file (same name) or change the
     url(...) in the "Backgrounds" section below.
   • Each picture fills the whole screen. If text overlaps the artwork
@@ -91,10 +91,11 @@ body.cover-locked{ overflow:hidden; height:100vh; }
    placed in units of the painting, so text and artwork keep the same proportions
    on every screen. Any space left around the painting is filled with a soft,
    blurred copy of it.
-   Per page:  --hw / --wh   painting height÷width and width÷height
-              --t1 / --th   where the text block starts / how tall it is (fraction of painting height)
+   All paintings are the same size: 1080 × 1528 pixels.
+   Per page:  --t1 / --th   where the text block starts / how tall it is (fraction of painting height)
               --tw          half the text width (fraction of painting width)            */
-.painted{ height:100vh; height:100svh; container-type:size; }
+.painted{ height:100vh; height:100svh; container-type:size;
+  --hw:1.41481; --wh:.70681;   /* every painting is 1080 × 1528 */ }
 .painted > *{
   --artH: min(100cqh, calc(100cqw * var(--hw)));
   --artW: calc(var(--artH) * var(--wh));
@@ -141,11 +142,11 @@ body.cover-locked{ overflow:hidden; height:100vh; }
   margin-bottom:calc(.4 * var(--u));
 }
 
-#coverPage{ --hw:1.43373; --wh:.69748; --t1:.22; --th:.42; --tw:.30; }
-#day1{ --hw:1.38961; --wh:.71963; --t1:.17; --th:.50; --tw:.32; }
-#day2{ --hw:1.41556; --wh:.70643; --t1:.15; --th:.40; --tw:.34; }
-#day3{ --hw:1.5;     --wh:.66667; --t1:.27; --th:.41; --tw:.33; }
-#day4{ --hw:1.41556; --wh:.70643; --t1:.115; --th:.465; --tw:.34; }
+#coverPage{ --t1:.216; --th:.426; --tw:.30; }
+#day1{ --t1:.17; --th:.50; --tw:.326; }
+#day2{ --t1:.15; --th:.40; --tw:.34; }
+#day3{ --t1:.265; --th:.418; --tw:.33; }
+#day4{ --t1:.115; --th:.465; --tw:.34; }
 
 #day2 .gurbani, #day2 .translation{ color:#7A4A14; }
 #day3 .gurbani{ color:#6B2E2E; } #day3 .translation{ color:#4E4A3A; }
@@ -246,7 +247,7 @@ body.cover-locked{ overflow:hidden; height:100vh; }
 #day3      { --bg:url('bg-day3.jpg'); }
 #day4      { --bg:url('bg-day4.jpg'); }
 #note      { --bg:url('bg-note.jpg'); }
-#note{ --hw:1.38961; --wh:.71963; --t1:.24; --th:.41; --tw:.31; }
+#note{ --t1:.24; --th:.41; --tw:.316; }
 
 /* ---------- Cover ---------- */
 #coverPage{ cursor:pointer; }
@@ -471,26 +472,26 @@ body:not(.cover-locked) .splash-hint{ display:none; }
 <!-- ======================= EDIT: DAY 3 — 5 NOV ======================= -->
 <section class="page painted" id="day3">
   <div class="art" aria-hidden="true">
-    <span class="bird" style="left:35.625%; top:12.128%; width:6.25%; --dx:18.1cqw; --dy:-3.4cqw; --dur:21.2s; --delay:-1.5s; --flap:0.50s;"><img src="bird-1.png" alt=""></span>
-    <span class="bird" style="left:57.969%; top:13.188%; width:5.234%; --dx:16.8cqw; --dy:-3.0cqw; --dur:21.7s; --delay:-0.8s; --flap:0.48s;"><img src="bird-2.png" alt=""></span>
-    <span class="bird" style="left:45.234%; top:13.876%; width:4.297%; --dx:17.3cqw; --dy:-2.8cqw; --dur:18.7s; --delay:-15.5s; --flap:0.41s;"><img src="bird-3.png" alt=""></span>
-    <span class="bird" style="left:67.656%; top:15.107%; width:5.938%; --dx:24.8cqw; --dy:-4.1cqw; --dur:20.2s; --delay:-11.7s; --flap:0.47s;"><img src="bird-4.png" alt=""></span>
-    <span class="bird" style="left:22.812%; top:15.681%; width:4.766%; --dx:16.7cqw; --dy:-3.8cqw; --dur:27.8s; --delay:-8.0s; --flap:0.41s;"><img src="bird-5.png" alt=""></span>
-    <span class="bird" style="left:50.078%; top:16.225%; width:4.375%; --dx:20.3cqw; --dy:-3.7cqw; --dur:19.2s; --delay:-3.5s; --flap:0.51s;"><img src="bird-6.png" alt=""></span>
-    <span class="bird" style="left:37.578%; top:16.597%; width:4.453%; --dx:21.2cqw; --dy:-3.1cqw; --dur:24.4s; --delay:-1.5s; --flap:0.39s;"><img src="bird-7.png" alt=""></span>
-    <span class="bird" style="left:57.188%; top:17.027%; width:5.312%; --dx:25.5cqw; --dy:-2.8cqw; --dur:20.1s; --delay:-6.3s; --flap:0.51s;"><img src="bird-8.png" alt=""></span>
-    <span class="bird" style="left:17.422%; top:17.542%; width:5.0%; --dx:20.2cqw; --dy:-3.7cqw; --dur:22.5s; --delay:-15.7s; --flap:0.43s;"><img src="bird-9.png" alt=""></span>
-    <span class="bird" style="left:29.141%; top:17.542%; width:5.0%; --dx:23.4cqw; --dy:-3.9cqw; --dur:23.7s; --delay:-17.3s; --flap:0.44s;"><img src="bird-10.png" alt=""></span>
-    <span class="bird" style="left:74.062%; top:18.516%; width:5.391%; --dx:17.7cqw; --dy:-2.8cqw; --dur:27.8s; --delay:-21.0s; --flap:0.41s;"><img src="bird-11.png" alt=""></span>
-    <span class="bird" style="left:65.781%; top:18.631%; width:5.938%; --dx:16.5cqw; --dy:-3.4cqw; --dur:22.9s; --delay:-17.5s; --flap:0.51s;"><img src="bird-12.png" alt=""></span>
-    <span class="bird" style="left:30.859%; top:19.519%; width:4.766%; --dx:20.4cqw; --dy:-3.5cqw; --dur:26.8s; --delay:-15.9s; --flap:0.51s;"><img src="bird-13.png" alt=""></span>
-    <span class="bird" style="left:22.812%; top:20.092%; width:6.172%; --dx:27.8cqw; --dy:-4.1cqw; --dur:22.6s; --delay:-10.7s; --flap:0.53s;"><img src="bird-14.png" alt=""></span>
-    <span class="bird" style="left:63.438%; top:22.298%; width:3.125%; --dx:25.8cqw; --dy:-3.3cqw; --dur:18.6s; --delay:-18.5s; --flap:0.56s;"><img src="bird-15.png" alt=""></span>
-    <span class="bird" style="left:77.578%; top:23.014%; width:4.375%; --dx:21.4cqw; --dy:-3.4cqw; --dur:20.8s; --delay:-0.5s; --flap:0.48s;"><img src="bird-16.png" alt=""></span>
-    <span class="bird" style="left:19.609%; top:23.215%; width:6.172%; --dx:17.6cqw; --dy:-1.9cqw; --dur:19.7s; --delay:-15.1s; --flap:0.41s;"><img src="bird-17.png" alt=""></span>
-    <span class="bird" style="left:69.219%; top:23.300%; width:5.703%; --dx:21.5cqw; --dy:-3.9cqw; --dur:20.5s; --delay:-1.6s; --flap:0.48s;"><img src="bird-18.png" alt=""></span>
-    <span class="bird" style="left:69.844%; top:25.907%; width:5.078%; --dx:28.4cqw; --dy:-3.7cqw; --dur:23.5s; --delay:-20.3s; --flap:0.44s;"><img src="bird-19.png" alt=""></span>
-    <span class="bird" style="left:82.266%; top:26.681%; width:5.156%; --dx:21.0cqw; --dy:-3.9cqw; --dur:22.2s; --delay:-21.2s; --flap:0.41s;"><img src="bird-20.png" alt=""></span>
+    <span class="bird" style="left:35.625%; top:11.363%; width:6.25%; --dx:18.1cqw; --dy:-3.4cqw; --dur:21.2s; --delay:-1.5s; --flap:0.50s;"><img src="bird-1.png" alt=""></span>
+    <span class="bird" style="left:57.969%; top:12.445%; width:5.234%; --dx:16.8cqw; --dy:-3.0cqw; --dur:21.7s; --delay:-0.8s; --flap:0.48s;"><img src="bird-2.png" alt=""></span>
+    <span class="bird" style="left:45.234%; top:13.147%; width:4.297%; --dx:17.3cqw; --dy:-2.8cqw; --dur:18.7s; --delay:-15.5s; --flap:0.41s;"><img src="bird-3.png" alt=""></span>
+    <span class="bird" style="left:67.656%; top:14.402%; width:5.938%; --dx:24.8cqw; --dy:-4.1cqw; --dur:20.2s; --delay:-11.7s; --flap:0.47s;"><img src="bird-4.png" alt=""></span>
+    <span class="bird" style="left:22.812%; top:14.988%; width:4.766%; --dx:16.7cqw; --dy:-3.8cqw; --dur:27.8s; --delay:-8.0s; --flap:0.41s;"><img src="bird-5.png" alt=""></span>
+    <span class="bird" style="left:50.078%; top:15.543%; width:4.375%; --dx:20.3cqw; --dy:-3.7cqw; --dur:19.2s; --delay:-3.5s; --flap:0.51s;"><img src="bird-6.png" alt=""></span>
+    <span class="bird" style="left:37.578%; top:15.923%; width:4.453%; --dx:21.2cqw; --dy:-3.1cqw; --dur:24.4s; --delay:-1.5s; --flap:0.39s;"><img src="bird-7.png" alt=""></span>
+    <span class="bird" style="left:57.188%; top:16.361%; width:5.312%; --dx:25.5cqw; --dy:-2.8cqw; --dur:20.1s; --delay:-6.3s; --flap:0.51s;"><img src="bird-8.png" alt=""></span>
+    <span class="bird" style="left:17.422%; top:16.887%; width:5.0%; --dx:20.2cqw; --dy:-3.7cqw; --dur:22.5s; --delay:-15.7s; --flap:0.43s;"><img src="bird-9.png" alt=""></span>
+    <span class="bird" style="left:29.141%; top:16.887%; width:5.0%; --dx:23.4cqw; --dy:-3.9cqw; --dur:23.7s; --delay:-17.3s; --flap:0.44s;"><img src="bird-10.png" alt=""></span>
+    <span class="bird" style="left:74.062%; top:17.880%; width:5.391%; --dx:17.7cqw; --dy:-2.8cqw; --dur:27.8s; --delay:-21.0s; --flap:0.41s;"><img src="bird-11.png" alt=""></span>
+    <span class="bird" style="left:65.781%; top:17.998%; width:5.938%; --dx:16.5cqw; --dy:-3.4cqw; --dur:22.9s; --delay:-17.5s; --flap:0.51s;"><img src="bird-12.png" alt=""></span>
+    <span class="bird" style="left:30.859%; top:18.904%; width:4.766%; --dx:20.4cqw; --dy:-3.5cqw; --dur:26.8s; --delay:-15.9s; --flap:0.51s;"><img src="bird-13.png" alt=""></span>
+    <span class="bird" style="left:22.812%; top:19.488%; width:6.172%; --dx:27.8cqw; --dy:-4.1cqw; --dur:22.6s; --delay:-10.7s; --flap:0.53s;"><img src="bird-14.png" alt=""></span>
+    <span class="bird" style="left:63.438%; top:21.739%; width:3.125%; --dx:25.8cqw; --dy:-3.3cqw; --dur:18.6s; --delay:-18.5s; --flap:0.56s;"><img src="bird-15.png" alt=""></span>
+    <span class="bird" style="left:77.578%; top:22.469%; width:4.375%; --dx:21.4cqw; --dy:-3.4cqw; --dur:20.8s; --delay:-0.5s; --flap:0.48s;"><img src="bird-16.png" alt=""></span>
+    <span class="bird" style="left:19.609%; top:22.674%; width:6.172%; --dx:17.6cqw; --dy:-1.9cqw; --dur:19.7s; --delay:-15.1s; --flap:0.41s;"><img src="bird-17.png" alt=""></span>
+    <span class="bird" style="left:69.219%; top:22.761%; width:5.703%; --dx:21.5cqw; --dy:-3.9cqw; --dur:20.5s; --delay:-1.6s; --flap:0.48s;"><img src="bird-18.png" alt=""></span>
+    <span class="bird" style="left:69.844%; top:25.421%; width:5.078%; --dx:28.4cqw; --dy:-3.7cqw; --dur:23.5s; --delay:-20.3s; --flap:0.44s;"><img src="bird-19.png" alt=""></span>
+    <span class="bird" style="left:82.266%; top:26.210%; width:5.156%; --dx:21.0cqw; --dy:-3.9cqw; --dur:22.2s; --delay:-21.2s; --flap:0.41s;"><img src="bird-20.png" alt=""></span>
   </div>
   <div class="card-text">
     <div class="verse">
