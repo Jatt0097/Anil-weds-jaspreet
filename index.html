@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Anil Mantoo weds Jaspreet Kaur — Wedding Celebrations 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,300;1,400;1,500&family=Great+Vibes&family=Josefin+Sans:wght@300;400;600;700&family=Noto+Serif+Gurmukhi:wght@400;500;600&display=swap" rel="stylesheet">
+<!--
+  ================================================================
+  HOW TO EDIT
+  • Words (names, dates, events, times, venues): scroll down to the
+    blocks marked "EDIT: …".
+  • Pictures live in the "images" folder next to this file:
+      bg-cover.jpg  cover            bg-day3.jpg  Day 3 (Anand Karaj)
+      bg-day1.jpg   Day 1            bg-day4.jpg  Day 4 (Reception)
+      bg-day2.jpg   Day 2 (Haldi)    fall-*.png  falling flowers
+      jhoola.png    the swing on Day 2 (moves on its own)
+      birds/        the flying doves on Day 3
+    To swap a picture, replace the file (same name) or change the
+    url(...) in the "Backgrounds" section below.
+  • Each picture fills the whole screen. If text overlaps the artwork
+    after you change a picture, adjust that page's --y / --top / --bottom
+    in the "Backgrounds" section.
+  ================================================================
+-->
+<style>
+/* Layout: one portrait invitation card per screen, text centred inside each painted arch. */
+:root{
+  color-scheme: light;
+  --paper:  #F6EFE4;   /* page ground */
+  --ink:    #3C2F2F;   /* body text */
+  --rose:   #A85070;   /* names, signature */
+  --plum:   #9B7EA8;   /* "weds" */
+  --gold:   #B8924A;   /* rules, venues */
+  --muted:  #7A6060;   /* small caps labels */
+
+  --f-display: 'Great Vibes', 'Snell Roundhand', cursive;
+  --f-caps:    'Cinzel', 'Trajan Pro', Georgia, serif;
+  --f-serif:   'Cormorant Garamond', Garamond, Georgia, serif;
+  --f-sans:    'Josefin Sans', 'Gill Sans', 'Helvetica Neue', sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{ font-family:var(--f-sans); background:var(--paper); color:var(--ink); overflow-x:hidden; }
+body.cover-locked{ overflow:hidden; height:100vh; }
+
+/* ---------- Each section fills the whole screen with its artwork ---------- */
+.page{
+  position:relative;
+  min-height:100vh;
+  min-height:100svh;
+  overflow:hidden;
+  /* one type unit that tracks the visible painting, so text scales with it */
+  --u: calc(min(100vw, 100vh * .706) / 100);
+}
+.card{
+  position:absolute; inset:0;
+  background:var(--bg) center var(--y, 20%) / cover no-repeat;
+}
+/* Portrait screens (phones): the painting fills the height, so the text area
+   follows the painting's arch using --top / --bottom (% of screen height). */
+.card-text{
+  position:absolute;
+  left:9%; right:9%;
+  top:var(--top, 18%);
+  bottom:calc(100% - var(--bottom, 58%));
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center;
+}
+/* Wider screens: the painting fills the width, so centre the text in the arch. */
+@media (min-aspect-ratio: 7/10){
+  .card-text{
+    left:50%; right:auto; transform:translateX(-50%);
+    width:min(560px, 62vw);
+    top:12%; bottom:12%;
+  }
+}
+
+/* ---------- Backgrounds + text area for each page (EDIT here to swap pictures) ----------
+   --y      which part of the painting shows on wide screens (0% = top, 100% = bottom)
+   --top / --bottom   where the text sits on phones, as % of the screen height        */
+#coverPage { --bg:url('images/bg-cover.jpg'); }
+#day1      { --bg:url('images/bg-day1.jpg'); }
+#day2      { --bg:url('images/bg-day2.jpg'); }
+
+/* ---------- Painted pages (every page) ----------
+   The whole painting is always shown, never cropped, and the text is sized and
+   placed in units of the painting, so text and artwork keep the same proportions
+   on every screen. Any space left around the painting is filled with a soft,
+   blurred copy of it.
+   Per page:  --hw / --wh   painting height÷width and width÷height
+              --t1 / --th   where the text block starts / how tall it is (fraction of painting height)
+              --tw          half the text width (fraction of painting width)            */
+.painted{ height:100vh; height:100svh; container-type:size; }
+.painted > *{
+  --artH: min(100cqh, calc(100cqw * var(--hw)));
+  --artW: calc(var(--artH) * var(--wh));
+  --artTop: calc((100cqh - var(--artH)) / 2);
+  --u: calc(var(--artW) / 100);                   /* 1% of the painting's width */
+}
+.painted::before{
+  content:""; position:absolute; inset:-40px;
+  background:var(--bg) center/cover no-repeat;
+  filter:blur(26px) saturate(1.05); opacity:.9;
+}
+.painted .art{
+  position:absolute;
+  top:var(--artTop); left:calc(50cqw - var(--artW) / 2);
+  width:var(--artW); height:var(--artH);
+  background:var(--bg) center / 100% 100% no-repeat;
+  box-shadow:0 0 50px rgba(120,80,40,.14);
+  container-type:inline-size;
+  overflow:hidden;
+}
+.painted .card-text{
+  top:calc(var(--artTop) + var(--artH) * var(--t1));
+  height:calc(var(--artH) * var(--th));
+  bottom:auto;
+  left:calc(50cqw - var(--artW) * var(--tw));
+  right:calc(50cqw - var(--artW) * var(--tw));
+  width:auto; transform:none;
+}
+
+/* Gurbani verses and their translations */
+.verse{ display:flex; flex-direction:column; align-items:center; margin-bottom:calc(2.2 * var(--u)); }
+.gurbani{
+  font-family:'Noto Serif Gurmukhi', 'Mukta Mahee', 'Raavi', serif;
+  font-size:max(9px, calc(2.35 * var(--u))); line-height:1.7; font-weight:500;
+}
+.translation{
+  font-family:var(--f-serif); font-style:italic;
+  font-size:max(8.5px, calc(2.1 * var(--u))); line-height:1.45;
+  margin-top:calc(.9 * var(--u));
+}
+.invite-line{
+  font-family:var(--f-serif);
+  font-size:max(9px, calc(2.3 * var(--u))); line-height:1.45;
+  margin-bottom:calc(.4 * var(--u));
+}
+
+#coverPage{ --hw:1.43373; --wh:.69748; --t1:.22; --th:.42; --tw:.30; }
+#day1{ --hw:1.38961; --wh:.71963; --t1:.17; --th:.50; --tw:.32; }
+#day2{ --hw:1.41556; --wh:.70643; --t1:.15; --th:.40; --tw:.34; }
+#day3{ --hw:1.5;     --wh:.66667; --t1:.27; --th:.41; --tw:.33; }
+#day4{ --hw:1.41556; --wh:.70643; --t1:.115; --th:.465; --tw:.34; }
+
+#day2 .gurbani, #day2 .translation{ color:#7A4A14; }
+#day3 .gurbani{ color:#6B2E2E; } #day3 .translation{ color:#4E4A3A; }
+#day4 .gurbani{ color:#6B4220; } #day4 .translation{ color:#5C4830; } #day4 .invite-line{ color:#4A3622; }
+/* Pages with verses: slightly tighter type and spacing so everything fits the arch */
+#day2 .day-title, #day4 .day-title{ font-size:max(24px, calc(8 * var(--u))); }
+#day3 .day-title.decorative{ font-size:max(22px, calc(6.4 * var(--u))); }
+#day2 .event-list, #day3 .event-list, #day4 .event-list{ gap:calc(1.3 * var(--u)); }
+#day2 .event-name, #day3 .event-name, #day4 .event-name{ font-size:max(14px, calc(3.8 * var(--u))); }
+#day2 .rule, #day3 .rule, #day4 .rule{ margin:calc(1.6 * var(--u)) auto calc(1.8 * var(--u)); }
+#day2 .verse, #day3 .verse, #day4 .verse{ margin-bottom:calc(1.6 * var(--u)); }
+
+/* Day 4: twinkling sparkles on the curtains and chandeliers, plus drifting glitter.
+   The sparkles are placed by the script at the bottom of the page.            */
+#day4 .sparkles{ position:absolute; inset:0; pointer-events:none; }
+#day4 .sparkle{
+  position:absolute; width:var(--s); height:var(--s);
+  margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  opacity:0;
+  animation:twinkle var(--d) ease-in-out var(--delay) infinite;
+}
+#day4 .sparkle::before, #day4 .sparkle::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(90deg, transparent 0 45%, #FFF3C4 48%, #fff 50%, #FFF3C4 52%, transparent 55% 100%),
+    linear-gradient(0deg,  transparent 0 45%, #FFF3C4 48%, #fff 50%, #FFF3C4 52%, transparent 55% 100%);
+  filter:drop-shadow(0 0 1.5px #D9A43A) drop-shadow(0 0 4px rgba(214,160,50,.95)) drop-shadow(0 0 9px rgba(255,205,100,.8));
+  clip-path:polygon(50% 0, 56% 44%, 100% 50%, 56% 56%, 50% 100%, 44% 56%, 0 50%, 44% 44%);
+}
+#day4 .sparkle::after{
+  transform:rotate(45deg) scale(.55);
+  opacity:.8;
+}
+#day4 .sparkle i{
+  position:absolute; left:50%; top:50%; width:28%; height:28%;
+  transform:translate(-50%,-50%); border-radius:50%;
+  background:radial-gradient(circle, #fff 0 30%, #FFE08A 55%, transparent 75%);
+  box-shadow:0 0 8px 3px rgba(226,170,60,.75), 0 0 16px 6px rgba(255,215,120,.45);
+}
+@keyframes twinkle{
+  0%, 100% { opacity:0; transform:scale(.2) rotate(0deg); }
+  45%      { opacity:1; transform:scale(1) rotate(35deg); }
+  60%      { opacity:.85; transform:scale(.85) rotate(45deg); }
+}
+#day4 .glitter{
+  position:absolute; top:-2%;
+  width:var(--g); height:var(--g); border-radius:50%;
+  background:radial-gradient(circle, #FFF6D8 0 35%, #D9A43A 70%, transparent 72%);
+  box-shadow:0 0 5px rgba(214,160,50,.9);
+  opacity:0;
+  animation:glitterFall var(--d) linear var(--delay) infinite, glitterShine 1.6s ease-in-out infinite alternate;
+}
+@keyframes glitterFall{
+  0%   { transform:translate(0,0); opacity:0; }
+  10%  { opacity:.95; }
+  90%  { opacity:.8; }
+  100% { transform:translate(var(--dx), 104cqh); opacity:0; }
+}
+@keyframes glitterShine{
+  from{ filter:brightness(1); }
+  to  { filter:brightness(1.6); }
+}
+
+/* Day 2: the jhoola swings gently from a point just above its ropes */
+#day2 .jhoola{
+  position:absolute;
+  left:24.478%; top:54.424%; width:49.905%;   /* its exact spot in the painting */
+  transform-origin:50% -6%;
+  animation:jhoolaSwing 4.4s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes jhoolaSwing{
+  from{ transform:rotate(-1deg); }
+  to  { transform:rotate(1deg); }
+}
+
+/* Day 3: doves drift up and to the right across the sky, flapping as they go.
+   Each bird starts at its spot in the painting; --dx/--dy set how far it flies. */
+#day3 .bird{
+  position:absolute;
+  animation:birdFly var(--dur) linear var(--delay) infinite;
+  will-change:transform, opacity;
+}
+#day3 .bird img{
+  display:block; width:100%;
+  animation:birdFlap var(--flap) ease-in-out infinite alternate;
+}
+@keyframes birdFly{
+  0%   { transform:translate(0,0); opacity:0; }
+  10%  { opacity:1; }
+  85%  { opacity:1; }
+  100% { transform:translate(var(--dx), var(--dy)); opacity:0; }
+}
+@keyframes birdFlap{
+  from{ transform:scaleY(1) translateY(0); }
+  to  { transform:scaleY(.7) translateY(4%); }
+}
+#day3      { --bg:url('images/bg-day3.jpg'); }
+#day4      { --bg:url('images/bg-day4.jpg'); }
+#note      { --bg:url('images/bg-note.jpg'); }
+#note{ --hw:1.38961; --wh:.71963; --t1:.24; --th:.41; --tw:.31; }
+
+/* ---------- Cover ---------- */
+#coverPage{ cursor:pointer; }
+.cover-pre{
+  font-size:max(9px, calc(1.9 * var(--u))); font-weight:300; letter-spacing:.28em; text-transform:uppercase;
+  color:#9E5A6E; line-height:1.7; max-width:30em; margin-bottom:calc(4 * var(--u));
+}
+.cover-names{
+  font-family:var(--f-caps); font-weight:700;
+  font-size:max(20px, calc(6.4 * var(--u))); line-height:1.3; color:var(--rose);
+  text-wrap:balance;
+}
+.cover-weds{
+  display:block; margin:calc(1.2 * var(--u)) 0;
+  font-family:var(--f-serif); font-style:italic; font-weight:400;
+  font-size:max(15px, calc(4 * var(--u))); color:var(--plum);
+}
+.cover-date-block{
+  display:inline-flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:.2em 1em;
+  margin-top:calc(5 * var(--u)); padding:calc(1.6 * var(--u)) calc(4 * var(--u));
+  border:1px solid rgba(168,80,112,.35);
+  background:rgba(255,255,255,.45);
+}
+.cover-date-block{ flex-direction:column; }
+.cover-date-block .gem{ display:none; }
+.cover-date-text{
+  font-size:max(10px, calc(2.1 * var(--u))); font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#5A2E42;
+}
+.splash-hint{
+  position:absolute; left:0; right:0; bottom:calc(16px + 2vh); z-index:3;
+  text-align:center;
+  font-size:11px; font-weight:400; letter-spacing:.26em; text-transform:uppercase;
+  color:#5A3A4A;
+  animation:pulse 2.2s ease-in-out infinite;
+}
+.splash-hint span{ background:rgba(255,255,255,.7); padding:.6em 1.2em; }
+body:not(.cover-locked) .splash-hint{ display:none; }
+@keyframes pulse{ 0%,100%{opacity:.55;} 50%{opacity:1;} }
+
+/* Falling flowers over the cover */
+.falling-flowers{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:2; }
+.falling-flower{
+  position:absolute; top:-10%; opacity:0;
+  animation:flowerFall linear infinite;
+  filter:drop-shadow(0 3px 5px rgba(60,47,47,.15));
+}
+@keyframes flowerFall{
+  0%  { transform:translateY(0) translateX(0) rotate(0deg); opacity:0; }
+  8%  { opacity:.95; }
+  50% { transform:translateY(58vh) translateX(18px) rotate(160deg); }
+  92% { opacity:.85; }
+  100%{ transform:translateY(118vh) translateX(-14px) rotate(320deg); opacity:0; }
+}
+
+/* ---------- Day cards ---------- */
+.eyebrow{
+  font-size:max(10px, calc(2.2 * var(--u))); font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:calc(1 * var(--u));
+}
+.day-title{
+  font-family:var(--f-display); font-weight:400;
+  font-size:max(24px, calc(9.5 * var(--u))); line-height:1.1; color:#9E5A58;
+  text-wrap:balance;
+}
+.day-title.decorative{ font-family:'Cinzel Decorative', var(--f-caps); font-size:max(26px, calc(7.6 * var(--u))); line-height:1.2; }
+.date-line{
+  font-family:var(--f-serif); font-style:italic;
+  font-size:max(11px, calc(3 * var(--u))); color:#7A6898; letter-spacing:.03em;
+  margin-top:.calc(8 * var(--u));
+}
+.rule{
+  width:calc(15 * var(--u)); height:1px; margin:calc(2.4 * var(--u)) auto calc(2.6 * var(--u));
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  position:relative;
+}
+.rule::after{
+  content:"◆"; position:absolute; left:50%; top:50%; transform:translate(-50%,-52%);
+  font-size:max(7px, calc(1.4 * var(--u))); color:var(--gold); line-height:1;
+
+}
+.event-list{ display:flex; flex-direction:column; gap:calc(2.2 * var(--u)); }
+.event-name{
+  font-family:var(--f-serif); font-style:italic; font-weight:500;
+  font-size:max(14px, calc(4.4 * var(--u))); line-height:1.2; color:var(--ink);
+}
+.event-time{
+  font-size:max(8px, calc(1.8 * var(--u))); font-weight:400; letter-spacing:.2em; text-transform:uppercase; color:var(--muted);
+  margin-top:.calc(5 * var(--u));
+}
+.event-venue{
+  font-size:max(8px, calc(1.7 * var(--u))); font-weight:400; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
+  margin-top:.calc(4 * var(--u));
+}
+.event-venue:empty, .date-line:empty{ display:none; }
+
+/* Per-card colours, tuned to each painting */
+#day1 .eyebrow{color:#7A3A52;} #day1 .day-title{color:#A8506E;} #day1 .date-line{color:#B8924A;}
+#day1 .event-name{color:#5A3040;} #day1 .event-time{color:#8A5A66;}
+
+#day2 .eyebrow{color:#5A360A;} #day2 .day-title{color:#8A4410;} #day2 .date-line{color:#8A5A18;}
+#day2 .event-name{color:#4A2F0E;} #day2 .event-time{color:#6B4718;}
+
+#day3 .eyebrow{color:#5A2E2A;} #day3 .day-title{color:#7A2E2E;} #day3 .date-line{color:#4E5B3A;}
+#day3 .event-name{color:#2B1F1F;} #day3 .event-time{color:#5A4030;} #day3 .event-venue{color:#8A5A1E;}
+
+#day4 .eyebrow{color:#4A3219;} #day4 .day-title{color:#7A4A22;} #day4 .date-line{color:#6B5230;}
+#day4 .event-name{color:#3A2A18;} #day4 .event-time{color:#5C4326;} #day4 .event-venue{color:#8A5A1E;}
+
+/* ---------- Note from the couple ---------- */
+#note .eyebrow{ color:#9E5A6E; }
+#note .note-text{ color:#5A3A48; }
+.note-text{
+  font-family:var(--f-serif); font-style:italic; font-weight:400;
+  font-size:max(11px, calc(3.1 * var(--u))); line-height:1.75; color:#4A3F2E;
+}
+.signature{
+  font-family:var(--f-display); font-size:max(22px, calc(7 * var(--u))); color:var(--rose);
+  margin-top:calc(3 * var(--u));
+}
+
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  .falling-flowers{ display:none; }
+  .splash-hint{ animation:none; }
+  #day2 .jhoola, #day3 .bird, #day3 .bird img{ animation:none; }
+  #day4 .sparkles{ display:none; }
+}
+:focus-visible{ outline:2px solid var(--rose); outline-offset:4px; }
+</style>
+</head>
+<body class="cover-locked">
+
+<!-- ======================= EDIT: COVER ======================= -->
+<section class="page painted" id="coverPage" role="button" tabindex="0" aria-label="Open the celebrations">
+  <div class="falling-flowers" aria-hidden="true">
+    <img src="images/fall-peony.png"      class="falling-flower" alt="" style="left:4%;  width:52px; animation-duration:15s; animation-delay:0s;">
+    <img src="images/fall-gypsophila.png" class="falling-flower" alt="" style="left:15%; width:40px; animation-duration:13s; animation-delay:3s;">
+    <img src="images/fall-lilac-rose.png" class="falling-flower" alt="" style="left:27%; width:46px; animation-duration:17s; animation-delay:6s;">
+    <img src="images/fall-rosebud.png"    class="falling-flower" alt="" style="left:39%; width:36px; animation-duration:12s; animation-delay:1.5s;">
+    <img src="images/fall-hydrangea.png"  class="falling-flower" alt="" style="left:52%; width:48px; animation-duration:16s; animation-delay:8s;">
+    <img src="images/fall-peony.png"      class="falling-flower" alt="" style="left:64%; width:40px; animation-duration:14s; animation-delay:4.5s;">
+    <img src="images/fall-lilac-rose.png" class="falling-flower" alt="" style="left:76%; width:38px; animation-duration:18s; animation-delay:2s;">
+    <img src="images/fall-rosebud.png"    class="falling-flower" alt="" style="left:86%; width:34px; animation-duration:11s; animation-delay:7s;">
+    <img src="images/fall-gypsophila.png" class="falling-flower" alt="" style="left:94%; width:36px; animation-duration:15s; animation-delay:10s;">
+  </div>
+  <div class="art" aria-hidden="true"></div>
+  <div class="card-text">
+    <p class="cover-pre">Together with their families, joyfully invite you to celebrate</p>
+    <h1 class="cover-names">
+      Anil Mantoo
+      <span class="cover-weds">weds</span>
+      Jaspreet Kaur
+    </h1>
+    <div class="cover-date-block">
+      <span class="cover-date-text">3rd — 6th November 2026</span>
+      <span class="cover-date-text gem">◆</span>
+      <span class="cover-date-text">New Delhi, India</span>
+    </div>
+  </div>
+  <div class="splash-hint"><span>Tap to open the celebrations ▾</span></div>
+</section>
+
+<!-- ======================= EDIT: DAY 1 — 3 NOV ======================= -->
+<section class="page painted" id="day1">
+  <div class="art" aria-hidden="true"></div>
+  <div class="card-text">
+    <p class="eyebrow">Tuesday · 3rd November 2026</p>
+    <h2 class="day-title">Sukhmani Sahib Paath</h2>
+    <p class="date-line"></p>
+    <div class="rule"></div>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="event-name">Sukhmani Sahib Paath &amp; Sagan</div>
+        <div class="event-time">11:00 AM — 1:00 PM</div>
+        <div class="event-venue"></div>
+      </div>
+      <div class="event-row">
+        <div class="event-name">Lunch</div>
+        <div class="event-time">2:00 PM</div>
+        <div class="event-venue"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= EDIT: DAY 2 — 4 NOV ======================= -->
+<section class="page painted" id="day2">
+  <div class="art" aria-hidden="true">
+    <img class="jhoola" src="images/jhoola.png" alt="">
+  </div>
+  <div class="card-text">
+    <div class="verse">
+      <p class="gurbani">ਅਨਦੁ ਕਰਹੁ ਮਿਲੀ ਸੁੰਦਰ ਨਾਰੀ<br>ਗੁਰ ਨਾਨਕ ਮੇਰੀ ਪੈਜ ਸਵਾਰੀ ॥</p>
+      <p class="translation">“Rejoice in bliss, O beautiful brides/friends, united together”</p>
+    </div>
+    <p class="eyebrow">Wednesday · 4th November 2026</p>
+    <h2 class="day-title">Haldi &amp; Mehendi</h2>
+    <p class="date-line">A morning of turmeric &amp; henna</p>
+    <div class="rule"></div>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="event-name">Haldi Ceremony</div>
+        <div class="event-time">12:00 PM</div>
+        <div class="event-venue"></div>
+      </div>
+      <div class="event-row">
+        <div class="event-name">Lunch</div>
+        <div class="event-time">2:00 PM</div>
+        <div class="event-venue"></div>
+      </div>
+      <div class="event-row">
+        <div class="event-name">Mehendi</div>
+        <div class="event-time">3:00 PM</div>
+        <div class="event-venue"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= EDIT: DAY 3 — 5 NOV ======================= -->
+<section class="page painted" id="day3">
+  <div class="art" aria-hidden="true">
+    <span class="bird" style="left:35.625%; top:12.128%; width:6.25%; --dx:18.1cqw; --dy:-3.4cqw; --dur:21.2s; --delay:-1.5s; --flap:0.50s;"><img src="images/birds/bird-1.png" alt=""></span>
+    <span class="bird" style="left:57.969%; top:13.188%; width:5.234%; --dx:16.8cqw; --dy:-3.0cqw; --dur:21.7s; --delay:-0.8s; --flap:0.48s;"><img src="images/birds/bird-2.png" alt=""></span>
+    <span class="bird" style="left:45.234%; top:13.876%; width:4.297%; --dx:17.3cqw; --dy:-2.8cqw; --dur:18.7s; --delay:-15.5s; --flap:0.41s;"><img src="images/birds/bird-3.png" alt=""></span>
+    <span class="bird" style="left:67.656%; top:15.107%; width:5.938%; --dx:24.8cqw; --dy:-4.1cqw; --dur:20.2s; --delay:-11.7s; --flap:0.47s;"><img src="images/birds/bird-4.png" alt=""></span>
+    <span class="bird" style="left:22.812%; top:15.681%; width:4.766%; --dx:16.7cqw; --dy:-3.8cqw; --dur:27.8s; --delay:-8.0s; --flap:0.41s;"><img src="images/birds/bird-5.png" alt=""></span>
+    <span class="bird" style="left:50.078%; top:16.225%; width:4.375%; --dx:20.3cqw; --dy:-3.7cqw; --dur:19.2s; --delay:-3.5s; --flap:0.51s;"><img src="images/birds/bird-6.png" alt=""></span>
+    <span class="bird" style="left:37.578%; top:16.597%; width:4.453%; --dx:21.2cqw; --dy:-3.1cqw; --dur:24.4s; --delay:-1.5s; --flap:0.39s;"><img src="images/birds/bird-7.png" alt=""></span>
+    <span class="bird" style="left:57.188%; top:17.027%; width:5.312%; --dx:25.5cqw; --dy:-2.8cqw; --dur:20.1s; --delay:-6.3s; --flap:0.51s;"><img src="images/birds/bird-8.png" alt=""></span>
+    <span class="bird" style="left:17.422%; top:17.542%; width:5.0%; --dx:20.2cqw; --dy:-3.7cqw; --dur:22.5s; --delay:-15.7s; --flap:0.43s;"><img src="images/birds/bird-9.png" alt=""></span>
+    <span class="bird" style="left:29.141%; top:17.542%; width:5.0%; --dx:23.4cqw; --dy:-3.9cqw; --dur:23.7s; --delay:-17.3s; --flap:0.44s;"><img src="images/birds/bird-10.png" alt=""></span>
+    <span class="bird" style="left:74.062%; top:18.516%; width:5.391%; --dx:17.7cqw; --dy:-2.8cqw; --dur:27.8s; --delay:-21.0s; --flap:0.41s;"><img src="images/birds/bird-11.png" alt=""></span>
+    <span class="bird" style="left:65.781%; top:18.631%; width:5.938%; --dx:16.5cqw; --dy:-3.4cqw; --dur:22.9s; --delay:-17.5s; --flap:0.51s;"><img src="images/birds/bird-12.png" alt=""></span>
+    <span class="bird" style="left:30.859%; top:19.519%; width:4.766%; --dx:20.4cqw; --dy:-3.5cqw; --dur:26.8s; --delay:-15.9s; --flap:0.51s;"><img src="images/birds/bird-13.png" alt=""></span>
+    <span class="bird" style="left:22.812%; top:20.092%; width:6.172%; --dx:27.8cqw; --dy:-4.1cqw; --dur:22.6s; --delay:-10.7s; --flap:0.53s;"><img src="images/birds/bird-14.png" alt=""></span>
+    <span class="bird" style="left:63.438%; top:22.298%; width:3.125%; --dx:25.8cqw; --dy:-3.3cqw; --dur:18.6s; --delay:-18.5s; --flap:0.56s;"><img src="images/birds/bird-15.png" alt=""></span>
+    <span class="bird" style="left:77.578%; top:23.014%; width:4.375%; --dx:21.4cqw; --dy:-3.4cqw; --dur:20.8s; --delay:-0.5s; --flap:0.48s;"><img src="images/birds/bird-16.png" alt=""></span>
+    <span class="bird" style="left:19.609%; top:23.215%; width:6.172%; --dx:17.6cqw; --dy:-1.9cqw; --dur:19.7s; --delay:-15.1s; --flap:0.41s;"><img src="images/birds/bird-17.png" alt=""></span>
+    <span class="bird" style="left:69.219%; top:23.300%; width:5.703%; --dx:21.5cqw; --dy:-3.9cqw; --dur:20.5s; --delay:-1.6s; --flap:0.48s;"><img src="images/birds/bird-18.png" alt=""></span>
+    <span class="bird" style="left:69.844%; top:25.907%; width:5.078%; --dx:28.4cqw; --dy:-3.7cqw; --dur:23.5s; --delay:-20.3s; --flap:0.44s;"><img src="images/birds/bird-19.png" alt=""></span>
+    <span class="bird" style="left:82.266%; top:26.681%; width:5.156%; --dx:21.0cqw; --dy:-3.9cqw; --dur:22.2s; --delay:-21.2s; --flap:0.41s;"><img src="images/birds/bird-20.png" alt=""></span>
+  </div>
+  <div class="card-text">
+    <div class="verse">
+      <p class="gurbani">ੴ ਸਤਿਗੁਰ ਪ੍ਰਸਾਦਿ ॥<br>ਲਖ ਖੁਸੀਆ ਪਾਤਿਸਾਹੀਆ ਜੇ ਸਤਿਗੁਰੁ ਨਦਰਿ ਕਰੇ ॥</p>
+      <p class="translation">“One Universal Creator God. By The Grace Of The True Guru. Hundreds of thousands of princely pleasures and royalties are enjoyed, if the True Guru bestows His Glance of Grace.”</p>
+    </div>
+    <p class="eyebrow">Thursday · 5th November 2026</p>
+    <h2 class="day-title decorative">Anand Karaj</h2>
+    <p class="date-line">The Sacred Sikh Wedding Ceremony</p>
+    <div class="rule"></div>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="event-name">Wedding Ceremony</div>
+        <div class="event-time">11:00 AM</div>
+        <div class="event-venue">Gurudwara Sahib, Inderapuram</div>
+      </div>
+      <div class="event-row">
+        <div class="event-name">Lunch</div>
+        <div class="event-time">2:00 PM</div>
+        <div class="event-venue">Barbeque Nation, Inderapuram</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= EDIT: DAY 4 — 6 NOV ======================= -->
+<section class="page painted" id="day4">
+  <div class="art" aria-hidden="true">
+    <div class="sparkles"></div>
+  </div>
+  <div class="card-text">
+    <div class="verse">
+      <p class="gurbani">ੴ ਸਤਿਗੁਰ ਪ੍ਰਸਾਦਿ ॥<br>ਸਤਿਗੁਰ ਦਾਤਾ ਦਇਆ ਕਰਿ ਅਪੁਨੀ ਮਿਹਰ ਕਰਾਹਿ ॥<br>ਦਾਸਨਿ ਦਾਸ ਕਾਰਜ ਸਵਾਰੈ ਇਹੁ ਇਸ ਕੀ ਵਡਿਆਇ ॥</p>
+      <p class="translation">“The True Guru is the Great Giver; bestowing His compassion and mercy.<br>He resolves all affairs of His servants; such is His glorious greatness.”</p>
+    </div>
+    <p class="invite-line">With the heavenly blessings of Almighty Waheguru,<br>we cordially invite you to celebrate the joyous union of our children</p>
+    <div class="rule"></div>
+    <p class="eyebrow">Friday · 6th November 2026</p>
+    <h2 class="day-title">Reception</h2>
+    <p class="date-line">An evening of celebration</p>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="event-name">Reception</div>
+        <div class="event-time">7:00 PM Onwards</div>
+        <div class="event-venue">Zion, Moti Nagar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= EDIT: NOTE FROM THE COUPLE ======================= -->
+<section class="page painted" id="note">
+  <div class="art" aria-hidden="true"></div>
+  <div class="card-text">
+    <p class="eyebrow">A Note From The Couple</p>
+    <div class="rule"></div>
+    <p class="note-text">
+      Your presence has always meant the world to us, and as we begin this
+      beautiful new chapter together, we cannot imagine celebrating without
+      the people we hold dearest. Thank you for your love, your blessings,
+      and for being part of our story — we can't wait to celebrate with you.
+    </p>
+    <p class="signature">Anil &amp; Jaspreet</p>
+  </div>
+</section>
+
+<script>
+  // The page stays on the cover until it is tapped (or Enter/Space pressed).
+  (function () {
+    var cover = document.getElementById('coverPage');
+    document.body.classList.add('cover-locked');
+    function openInvite() {
+      if (!document.body.classList.contains('cover-locked')) return;
+      document.body.classList.remove('cover-locked');
+      document.getElementById('day1').scrollIntoView({ behavior: 'smooth' });
+    }
+    cover.addEventListener('click', openInvite);
+    cover.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openInvite(); }
+    });
+  })();
+
+  // Reception sparkles: gold glints clustered on the fairy-light curtains, the
+  // chandeliers and the floor, kept away from the text in the middle of the arch.
+  (function () {
+    var host = document.querySelector('#day4 .sparkles');
+    if (!host || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function r(a, b) { return a + Math.random() * (b - a); }
+    // [x from, x to, y from, y to, how many]  (percent of the painting)
+    var zones = [
+      [2, 18, 8, 95, 18],    // left curtain of lights
+      [82, 98, 8, 95, 18],   // right curtain of lights
+      [10, 90, 57, 72, 20],  // chandeliers
+      [20, 80, 76, 94, 10],  // floor and seating
+      [18, 82, 3, 14, 6]     // top of the arch
+    ];
+    zones.forEach(function (z) {
+      for (var n = 0; n < z[4]; n++) {
+        var s = document.createElement('span');
+        s.className = 'sparkle';
+        s.appendChild(document.createElement('i'));
+        s.style.left = r(z[0], z[1]) + '%';
+        s.style.top = r(z[2], z[3]) + '%';
+        s.style.setProperty('--s', r(16, 36).toFixed(0) + 'px');
+        var d = r(2.2, 4.2);
+        s.style.setProperty('--d', d.toFixed(2) + 's');
+        s.style.setProperty('--delay', (-r(0, d)).toFixed(2) + 's');
+        host.appendChild(s);
+      }
+    });
+    for (var k = 0; k < 28; k++) {
+      var g = document.createElement('span');
+      g.className = 'glitter';
+      g.style.left = r(3, 97) + '%';
+      g.style.setProperty('--g', r(3, 6).toFixed(1) + 'px');
+      g.style.setProperty('--dx', r(-30, 30).toFixed(0) + 'px');
+      var gd = r(9, 16);
+      g.style.setProperty('--d', gd.toFixed(1) + 's');
+      g.style.setProperty('--delay', (-r(0, gd)).toFixed(1) + 's');
+      host.appendChild(g);
+    }
+  })();
+</script>
+</body>
+</html>
